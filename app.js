@@ -1,41 +1,56 @@
 const h1 = document.querySelector("div.hello:first-child h1");
 
 function handleTitleClick() {
-    h1.style.color = "blue";
+    h1.classList.toggle("clicked");
+
+    // if (h1.classList.contains(clickedClass)) {
+    //     h1.classList.remove(clickedClass);
+    // } else {
+    //     h1.classList.add(clickedClass);
+    // }
+    
+    // const currentColor = h1.style.color;
+    // let newColor;
+    // if (currentColor === "blue") {
+    //     newColor = "tomato";
+    // } else {
+    //     newColor = "blue";
+    // }
+    // h1.style.color = newColor;
 }
 
 // 마우스가 title 위에 올라갈 때 발생하는 이벤트: mouseenter
-function handleMouseEnter() {
-    h1.innerTexth = "Mouse is here!";
-    console.log("mouse is here!");
-}
+// function handleMouseEnter() {
+//     h1.innerTexth = "Mouse is here!";
+//     console.log("mouse is here!");
+// }
 
 // 마우스가 title 위에서 벗어났을 때 발생하는 이벤트 : mouseleave
-function handleMouseLeave() {
-    h1.innerText = "Mouse is leave!";
-    console.log("mouse is leave!");
-}
+// function handleMouseLeave() {
+//     h1.innerText = "Mouse is leave!";
+//     console.log("mouse is leave!");
+// }
 
-function handleWindowResize() {
-    document.body.style.backgroundColor = "tomato";
-}
+// function handleWindowResize() {
+//     document.body.style.backgroundColor = "tomato";
+// }
 
-function handleWindowCopy() {
-    alert("copier!");
-}
+// function handleWindowCopy() {
+//     alert("copier!");
+// }
 
-function handleWindowOffline() {
-    alert("SOS no WiFi");
-}
+// function handleWindowOffline() {
+//     alert("SOS no WiFi");
+// }
 
 h1.addEventListener("click", handleTitleClick);
 // title.onclick = handleTitleClick;
 
-h1.addEventListener("mouseenter", handleMouseEnter);
+// h1.addEventListener("mouseenter", handleMouseEnter);
 // title.onmouseenter = handleMouseEnter;
 
-h1.addEventListener("mouseleave", handleMouseLeave);
+// h1.addEventListener("mouseleave", handleMouseLeave);
 
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
+// window.addEventListener("resize", handleWindowResize);
+// window.addEventListener("copy", handleWindowCopy);
+// window.addEventListener("offline", handleWindowOffline);

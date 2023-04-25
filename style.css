@@ -5,9 +5,12 @@ body {
 
 h1 {
     color: cornflowerblue;
-    transition: color .5s ease-in-out;
 }
 
 .clicked {
     color: tomato;
+}
+
+.hidden {
+    display: none;
 }

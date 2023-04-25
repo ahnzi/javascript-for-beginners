@@ -1,56 +1,28 @@
-const h1 = document.querySelector("div.hello:first-child h1");
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
 
-function handleTitleClick() {
-    h1.classList.toggle("clicked");
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
-    // if (h1.classList.contains(clickedClass)) {
-    //     h1.classList.remove(clickedClass);
-    // } else {
-    //     h1.classList.add(clickedClass);
-    // }
-    
-    // const currentColor = h1.style.color;
-    // let newColor;
-    // if (currentColor === "blue") {
-    //     newColor = "tomato";
-    // } else {
-    //     newColor = "blue";
-    // }
-    // h1.style.color = newColor;
+function onLoginSubmit(event) {
+    event.preventDefault();
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, username);
+    paintGreetings(username);
 }
 
-// 마우스가 title 위에 올라갈 때 발생하는 이벤트: mouseenter
-// function handleMouseEnter() {
-//     h1.innerTexth = "Mouse is here!";
-//     console.log("mouse is here!");
-// }
+function paintGreetings(username) {
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
 
-// 마우스가 title 위에서 벗어났을 때 발생하는 이벤트 : mouseleave
-// function handleMouseLeave() {
-//     h1.innerText = "Mouse is leave!";
-//     console.log("mouse is leave!");
-// }
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-// function handleWindowResize() {
-//     document.body.style.backgroundColor = "tomato";
-// }
-
-// function handleWindowCopy() {
-//     alert("copier!");
-// }
-
-// function handleWindowOffline() {
-//     alert("SOS no WiFi");
-// }
-
-h1.addEventListener("click", handleTitleClick);
-// title.onclick = handleTitleClick;
-
-// h1.addEventListener("mouseenter", handleMouseEnter);
-// title.onmouseenter = handleMouseEnter;
-
-// h1.addEventListener("mouseleave", handleMouseLeave);
-
-// window.addEventListener("resize", handleWindowResize);
-// window.addEventListener("copy", handleWindowCopy);
-// window.addEventListener("offline", handleWindowOffline);
+if (savedUsername === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    paintGreetings(savedUsername);
+}
